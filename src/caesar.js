@@ -4,14 +4,17 @@
 // of the anonymous function on line 6
 
 const caesarModule = (function () {
-  // you can add any code you want within this function scope
-  const standardAlphabet = {'a': 'a', 'b': 'b', 'c': 'c', 'd': 'd', 'e': 'e', 'f': 'f', 'g': 'g', 'h': 'h', 'i': 'i', 'j': 'j', 'k': 'k', 'l': 'l', 'm': 'm', 'n': 'n', 'o': 'o', 'p': 'p', 'q': 'q', 'r': 'r', 's': 's', 't': 't', 'u': 'u', 'v': 'v', 'w': 'w', 'x': 'x', 'y': 'y', 'z': 'z'}
 
+  // Helper function to shift the values of the alphabet according to the shift parameter
   const produceAlteredAlphabet = (shift = 0) => {
+    // Starts with the standard alphabet as an object with matching key:value pairs
     const alteredAlphabet = {'a': 'a', 'b': 'b', 'c': 'c', 'd': 'd', 'e': 'e', 'f': 'f', 'g': 'g', 'h': 'h', 'i': 'i', 'j': 'j', 'k': 'k', 'l': 'l', 'm': 'm', 'n': 'n', 'o': 'o', 'p': 'p', 'q': 'q', 'r': 'r', 's': 's', 't': 't', 'u': 'u', 'v': 'v', 'w': 'w', 'x': 'x', 'y': 'y', 'z': 'z'}
+    // Extracts the values into an array
     let shiftedLetters = Object.values(alteredAlphabet)
+    // Logic to determine right shift or left shift. Positive is right. Negative is left.
     if (shift > 0) {
       while (shift > 0) {
+        // Moves the given number of letters from the front of the alphabet to the back.
         const removed = shiftedLetters.shift()
         shiftedLetters.push(removed)
         shift--
@@ -19,11 +22,13 @@ const caesarModule = (function () {
     }
     if (shift < 0) {
       while (shift < 0) {
+        // Moves the given number of letters from the back of the alphabet to the front.
         const removed = shiftedLetters.pop()
         shiftedLetters.unshift(removed)
         shift++
       }
     }
+    // Loops back through the keys and assigns them the shifted letter as their value
     let i = 0
     for (key in alteredAlphabet) {
       const shiftedLetter = shiftedLetters[i]
