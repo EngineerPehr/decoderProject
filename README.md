@@ -1,6 +1,6 @@
 # decoder_assessment
 
-## Caesar Functions
+## Caesar Module Functions
 
 There are four functions within the Caesar Module. They are:
 
@@ -28,3 +28,10 @@ After - Shifted right 3 times:
 ### encoder and decoder
 
 `encoder` and `decoder` work in similar ways. They loop though a string that has been broken into an array via the `.split()` method. They then loop through an altered alphabet that has been provided by `produceAlteredAlphabet`. When the current character in the array matches the key or value respectively, that character is replaced with the corresponding value or key respectively. It then returns the array as a string via the `.join()` method.
+
+### caesar
+
+`caesar` is the main function that contains the helper functions. It also has logic to check that the shift parameter is within functional limits. It controls if `encoder` or `decoder` are used based on setting of the encode parameter.
+
+## Polybius Module Functions
+
