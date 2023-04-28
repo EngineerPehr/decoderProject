@@ -38,39 +38,48 @@ const caesarModule = (function () {
     return alteredAlphabet
   }
 
+  // Helper function that encodes a message with a given aplhabet
   const encoder = (input = '', alphabet = {}) => {
+    // Message split into an array
     const message = input.toLowerCase().split('')
+    // Loops through each element in the array and the alphabet
       for (let i = 0; i < message.length; i++) {
         const character = message[i]
         for (key in alphabet) {
           const letter = alphabet[key]
+          // When the array matches the alphabet, the array is updated with the new letter.
           if (key === character) message[i] = letter
         }
       }
-      console.log(message.join(''))
+      // Returns the array rejoined into a string
       return message.join('')
   }
 
+  // Helper function that decodes a message with a given alphabet
   const decoder = (input = '', alphabet = {}) => {
+    // Message is split into an array
     const message = input.toLowerCase().split('')
+    // Loops through the array and the alphabet
       for (let i = 0; i < message.length; i++) {
         const character = message[i]
         for (key in alphabet) {
           const letter = alphabet[key]
+          // When the letter matches the alphabet, it is replaced via the alphabet
           if (letter === character) message[i] = key
         }
       }
-      console.log(message.join(''))
+      // Returns the array rejoined into a string
       return message.join('')
   }
 
   const caesar = (input = '', shift = 0, encode = true) => {
     // Returns false if an unusable shift is given
     if (shift === 0 || shift < -25 || shift > 25) return false
-    // Shifted alphabet object
+    // Shifted alphabet object from helper function
     const shiftedAlphabet = produceAlteredAlphabet(shift)
-    // If set to encode, replace the characters in input with the corresponding letter from the shifted alphabet
+    // If set to encode, encodes the input via helper function
     if (encode === true) return encoder(input, shiftedAlphabet)
+    // If set to decode, decodes the input via helper function
     if (encode === false) return decoder(input, shiftedAlphabet)
   }
 
