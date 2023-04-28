@@ -23,23 +23,41 @@ const polybiusModule = (function () {
       return message.join('')
   }
 
+  const decoder = (input = '') => {
+    const splitInput = input.split(' ')
+      for (let i = 0; i < splitInput.length; i++) {
+        const string = splitInput[i]
+        const pairs = string.split('').map((currentNum, i) => (i % 2 === 0 ? string.slice(i, i + 2) : null)).filter(Boolean);
+        for (let j = 0; j < pairs.length; j++) {
+          const pair = pairs[j]
+          for (key in decoderSquare) {
+            const letter = decoderSquare[key]
+            // When the array matches the decoder square, the array is updated with the letter.
+            if (key === pair) pairs[j] = letter
+          }
+        }
+        splitInput[i] = pairs.join('')
+      }
+      return splitInput.join(' ')
+  }
+
   function polybius(input = '', encode = true) {
     if (encode === true) return encoder(input)
     if (encode === false) {
       if (input.split(' ').join('').length % 2 != 0) return false
-      
+      return decoder(input)
     }
   }
 
   return {
     polybius,
     encoder,
-
+    decoder
   }
 })()
 
 module.exports = { 
   polybius: polybiusModule.polybius,
   encoder: polybiusModule.encoder,
-
+  decoder: polybiusModule.decoder
  }
