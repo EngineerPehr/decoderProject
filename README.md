@@ -79,7 +79,7 @@ There are three functions within the Polybius Module. They are:
 
  ### produceNewAlphabet
 
- `produveNewAlphabet` works in a similar maner to `produceAlteredAlphabet`. It takes an object containing the standard alphabet with the letters as matching key:value pairs. It then makes an array out of the given alphabet string. It then loops through the object, assigning new values to each key. It then returns the object with the values representing the new alphabet, while the keys remain as the standard alphabet.
+ `produceNewAlphabet` works in a similar maner to `produceAlteredAlphabet`. It takes an object containing the standard alphabet with the letters as matching key:value pairs. It then makes an array out of the given alphabet string. It then loops through the object, assigning new values to each key. It then returns the object with the values representing the new alphabet, while the keys remain as the standard alphabet.
 
 Before:
  `'hfoasub&32!*@^mp:.<>17dqlx'`
