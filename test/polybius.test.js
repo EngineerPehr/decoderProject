@@ -1,8 +1,8 @@
 const expect = require('chai').expect
 const polybiusModule = require('../src/polybius')
-const polybius = polybiusModule.polybius
-const encoder = polybiusModule.encoder
-const decoder = polybiusModule.decoder
+const {polybius} = polybiusModule
+const {encoder} = polybiusModule
+const {decoder} = polybiusModule
 
 const unencodedInput = 'Three polygrams'
 const encodedOutput = '4432245151 534313452224112334'
