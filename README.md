@@ -9,11 +9,11 @@ There are four functions within the Caesar Module. They are:
  - `decoder`
  - `caesar`
 
- The first three are helper functions that the main function `caesar` relies on to work.
+ The first three are helper functions that the main function `caesar` relies on.
 
  ### produceAlteredAlphabet
 
-`produceAlteredAlphabet` takes the an object containing the standard alphabet with the letters as matching key:value pairs. It then shifts the values a specified number of times, aka the shift value, so that the key:value pairs are no longer matching. This works with both positive and negative shift values, shifting right and left respectively.
+`produceAlteredAlphabet` takes an object containing the standard alphabet with the letters as matching key:value pairs. It then shifts the values a specified number of times, aka the shift value, so that the key:value pairs are no longer matching. This works with both positive and negative shift values, shifting right and left respectively.
 
 Before:
 ```javascript
@@ -41,7 +41,7 @@ There are three functions within the Polybius Module. They are:
  - `decoder`
  - `polybius`
 
- The first two are helper functions that `polybius` relies on to function.
+ The first two are helper functions that the main function `polybius` relies on.
 
  ### encoder
 
@@ -66,3 +66,43 @@ There are three functions within the Polybius Module. They are:
  `polybius` is the main function and contains the helper functions. It also adds logic to determine if `encoder` or `decoder` should be used. If `decoder` is selected, it verifies that the input has been properly encoded by ensuring that there are an even amount of numbers within the input, ignoring spaces.
 
  ## Substitution Module
+
+ There are five functions in the Substitution Module. They are:
+
+ - `produceNewAlphabet`
+ - `encoder`
+ - `decoder`
+ - `hasMultiples`
+ - `substitution`
+
+ The first four are helper functions that the main function `substitution` relies on.
+
+ ### produceNewAlphabet
+
+ `produveNewAlphabet` works in a similar maner to `produceAlteredAlphabet`. It takes an object containing the standard alphabet with the letters as matching key:value pairs. It then makes an array out of the given alphabet string. It then loops through the object, assigning new values to each key. It then returns the object with the values representing the new alphabet, while the keys remain as the standard alphabet.
+
+Before:
+ `'hfoasub&32!*@^mp:.<>17dqlx'`
+
+After:
+```javascript
+{'a': 'h', 'b': 'f', 'c': 'o', 'd': 'a', 'e': 's', 'f': 'u', 'g': 'b', 'h': '&', 'i': '3', 'j': '2', 'k': '!', 'l': '*', 'm': '@', 'n': '^', 'o': 'm', 'p': 'p', 'q': ':', 'r': '.', 's': '<', 't': '>', 'u': '1', 'v': '7', 'w': 'd', 'x': 'q', 'y': 'l', 'z': 'x'}
+```
+
+ ### encoder and decoder
+
+`encoder` and `decoder` work identically to the `encoder` and `decoder` functions in the Caesar Module. They loop though a string that has been broken into an array via the `.split()` method. They then loop through an new alphabet that has been provided by `produceNewAlphabet`. When the current character in the array matches the key or value respectively, that character is replaced with the corresponding value or key respectively. It then returns the array as a string via the `.join()` method.
+
+### hasMultiples
+
+`hasMultiples` loops through a given string, storing each encountered character in an array. In the each iteration, it checks if the current character is in the array of previous characters. If it is, then the loop ends and it returns true. If it finishes the loop without encountering a duplicate character, it returns false.
+
+Returns true:
+`'hfoasub&32!*@^mp:.>>17dqlx'`
+
+Returns false:
+`'hfoasub&32!*@^mp:.<>17dqlx'`
+
+### substitution
+
+`substitution` is the main function combining the helper functions. It also includes logic to check for valid inputs, substitution alphabets, and whether to use `encoder` or `decoder`.
