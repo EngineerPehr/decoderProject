@@ -24,7 +24,11 @@ const polybiusModule = (function () {
   }
 
   function polybius(input = '', encode = true) {
-    if(encode === true) return encoder(input)
+    if (encode === true) return encoder(input)
+    if (encode === false) {
+      if (input.split(' ').join('').length % 2 != 0) return false
+      
+    }
   }
 
   return {
