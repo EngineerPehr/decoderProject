@@ -35,3 +35,34 @@ After - Shifted right 3 times:
 
 ## Polybius Module Functions
 
+There are three functions within the Polybius Module. They are:
+
+ - `encoder`
+ - `decoder`
+ - `polybius`
+
+ The first two are helper functions that `polybius` relies on to function.
+
+ ### encoder
+
+ `encoder` loops though a string that has been broken into an array via the `.split()` method. It then loops through the Polybius Square object. When the current letter in the array matches the key, that letter is replaced with the corresponding coordinates. It then returns the array as a string of numbers via the `.join()` method. 
+
+ Polybius Square:
+ ```javascript
+ {'a': 11, 'b': 21, 'c': 31, 'd': 41, 'e': 51, 'f': 12, 'g': 22, 'h': 32, 'i': 42, 'j': 42, 'k': 52, 'l': 13, 'm': 23, 'n': 33, 'o': 43, 'p': 53, 'q': 14, 'r': 24, 's': 34, 't': 44, 'u': 54, 'v': 15, 'w': 25, 'x': 35, 'y': 45, 'z': 55}
+ ```
+
+### decoder
+
+`decoder` loops though the input that has been broken into an array of strings via the `.split()` method. It then loops each string, and breaks it down into pairs of coordinates. It then loops through the Decoder Square object. When the current pair in the array matches the key, that pair is replaced with the corresponding letter, and joined into a word via `.join()`. It then replaces the string of numbers with the word in the original array. The original array is then returned as a string via the `.join()` method.
+
+ Decoder Square:
+ ```javascript
+ {11: 'a', 21: 'b', 31: 'c', 41: 'd', 51: 'e', 12: 'f', 22: 'g', 32: 'h', 42: '(i/j)', 52: 'k', 13: 'l', 23: 'm', 33: 'n', 43: 'o', 53: 'p', 14: 'q', 24: 'r', 34: 's', 44: 't', 54: 'u', 15: 'v', 25: 'w', 35: 'x', 45: 'y', 55: 'z'}
+ ```
+
+ ### polybius
+
+ `polybius` is the main function and contains the helper functions. It also adds logic to determine if `encoder` or `decoder` should be used. If `decoder` is selected, it verifies that the input has been properly encoded by ensuring that there are an even amount of numbers within the input, ignoring spaces.
+
+ ## Substitution Module
